@@ -93,9 +93,6 @@ server:
     annotations:
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-    tls:
-      hosts:
-      - argo-cd-server.argo.cbz.k8s
   ingressGrpc:
     enabled: true	
     ingressClassName: nginx
@@ -104,9 +101,6 @@ server:
     pathType: Prefix
     annotations:
       nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
-    tls:
-    - hosts:
-      - argo-cd-server-grpc.argo.cbz.k8s
-configs:
-  secret:
-    argocdServerAdminPassword: 123qwe123qwe123qwe123qwe
+# configs:
+#   secret:
+#     argocdServerAdminPassword: 123QWE123qwe123QWE123qwe
