@@ -25,11 +25,11 @@ persistence:
   enabled: true
   persistentVolumeClaim:
     registry:
-      size: 2Gi
+      size: 5Gi
     jobservice:
-      size: 1Gi
+      size: 2Gi
     chartmuseum:
       size: 2Gi
     trivy:
-      size: 2Gi	
+      size: 5Gi	
 
