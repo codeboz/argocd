@@ -12,12 +12,11 @@ expose:
       core: harbor-portal.harbor.cbz.k8s
       notary: harbor-notary.harbor.cbz.k8s
     annotations:
-      # ingress.kubernetes.io/ssl-redirect: "true"
-      # ingress.kubernetes.io/proxy-body-size: "0"
- 
-      # nginx.ingress.kubernetes.io/ssl-redirect: "true"
-      # nginx.ingress.kubernetes.io/proxy-body-size: "0"
-      # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      ingress.kubernetes.io/ssl-redirect: "true"
+      ingress.kubernetes.io/proxy-body-size: "0"
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/proxy-body-size: "0"
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       nginx.ingress.kubernetes.io/server-snippet: |
           location / {
             proxy_hide_header 'X-Forwarded-Proto'
@@ -35,7 +34,7 @@ internalTLS:
 ipFamily:
   ipv6:
     enabled: false
-externalURL: http://harbor-portal.harbor.cbz.k8s
+externalURL: https://harbor-portal.harbor.cbz.k8s
 persistence:
   enabled: true
   persistentVolumeClaim:
