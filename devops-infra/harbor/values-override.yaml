@@ -35,7 +35,7 @@ internalTLS:
 ipFamily:
   ipv6:
     enabled: false
-externalURL: https://harbor-portal.harbor.cbz.k8s
+externalURL: http://harbor-portal.harbor.cbz.k8s
 persistence:
   enabled: true
   persistentVolumeClaim:
