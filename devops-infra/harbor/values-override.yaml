@@ -10,9 +10,13 @@ expose:
     hosts:
       core: harbor-portal.harbor.cbz.k8s
       notary: harbor-notary.harbor.cbz.k8s
-
+    annotations:
+      ingress.kubernetes.io/ssl-redirect: "true"
+      ingress.kubernetes.io/proxy-body-size: "0"
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/proxy-body-size: "0"
 internalTLS:
-  enabled: true
+  enabled: false
 ipFamily:
   ipv6:
     enabled: false
@@ -28,3 +32,4 @@ persistence:
       size: 2Gi
     trivy:
       size: 2Gi	
+
