@@ -9,7 +9,7 @@ server:
   config:
     repositories: |
       - type: git
-        url: https://github.com/kurtburak/argocd.git
+        url: https://github.com/codeboz/argocd.git
       - name: argo-helm
         type: helm
         url: https://argoproj.github.io/argo-helm
@@ -27,7 +27,7 @@ server:
           - values.yaml
           - ../values-override.yaml
         path: argocd-install/argo-cd
-        repoURL: https://github.com/kurtburak/argocd.git
+        repoURL: https://github.com/codeboz/argocd.git
         targetRevision: HEAD
       syncPolicy:
         syncOptions:
@@ -40,7 +40,7 @@ server:
       project: argocd
       source:
         path: argocd-apps
-        repoURL: https://github.com/kurtburak/argocd.git
+        repoURL: https://github.com/codeboz/argocd.git
         targetRevision: HEAD
         directory:
           recurse: true
@@ -57,7 +57,7 @@ server:
       project: argocd
       source:
         path: argocd-appprojects
-        repoURL: https://github.com/kurtburak/argocd.git
+        repoURL: https://github.com/codeboz/argocd.git
         targetRevision: HEAD
         directory:
           recurse: true
@@ -82,3 +82,31 @@ server:
       kind: '*'
     orphanedResources:
       warn: false
+  extraArgs: 
+  - --insecure
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts: 
+    - argo-cd-server.argo.cbz.k8s
+    pathType: Prefix
+    annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    tls:
+      hosts:
+      - argo-cd-server.argo.cbz.k8s
+  ingressGrpc:
+    enabled: true	
+    ingressClassName: nginx
+    hosts: 
+    - argo-cd-server-grpc.argo.cbz.k8s
+    pathType: Prefix
+    annotations:
+      nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
+    tls:
+    - hosts:
+      - argo-cd-server-grpc.argo.cbz.k8s
+configs:
+  secret:
+    argocdServerAdminPassword: 123qwe123qwe123qwe123qwe
