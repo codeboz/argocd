@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: horbor
+  namespace: argocd
+spec:
+  destination:
+    namespace: devops-infra
+    server: https://kubernetes.default.svc
+  project: devops-infra
+  source:
+    path: devops-infra/harbor/harbor-helm
+    helm:
+      version: v3
+      valueFiles:
+      - values.yaml
+      - ../values-override.yaml
+    repoURL: https://github.com/codeboz/argocd.git
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+        

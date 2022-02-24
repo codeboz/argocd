@@ -1,0 +1,30 @@
+harborAdminPassword: 123qwe123qwe123qwe123qwe
+logLevel: error
+expose:
+  type: ingress
+  tls:
+    auto:
+      commonName: harbor-core.harbor.cbz.k8s
+  ingress:
+    className: nginx
+    hosts:
+      core: harbor-portal.harbor.cbz.k8s
+      notary: harbor-notary.harbor.cbz.k8s
+
+internalTLS:
+  enabled: true
+ipFamily:
+  ipv6:
+    enabled: false
+externalURL: http://harbor-portal.harbor.cbz.k8s
+persistence:
+  enabled: true
+  persistentVolumeClaim:
+    registry:
+      size: 2Gi
+    jobservice:
+      size: 1Gi
+    chartmuseum:
+      size: 2Gi
+    trivy:
+      size: 2Gi	
