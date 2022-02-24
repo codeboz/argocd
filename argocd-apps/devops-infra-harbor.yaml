@@ -18,8 +18,8 @@
 #     repoURL: https://github.com/codeboz/argocd.git
 #     targetRevision: HEAD
 #   syncPolicy:
-#     automated: {}
-#     selfHeal: true
-#     prune: true
+#     automated:
+#       selfHeal: true
+#       prune: true
 #     syncOptions:
 #     - CreateNamespace=true
