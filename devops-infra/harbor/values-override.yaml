@@ -3,6 +3,7 @@ logLevel: error
 expose:
   type: ingress
   tls:
+    enabled: false
     auto:
       commonName: harbor-portal.harbor.cbz.k8s
   ingress:
